@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .submit{
+            background-color: #0423aa; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+           
+         cursor: pointer;
+        }
+            
+        
+    </style>
+    <h1 style="text-align:center">Basic Form</h1>
+    <form action="">
+        <div>
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Enter full name" required>
+            <label>Email</label>
+            <input type="email" name ="email" placeholder="enter your email" value="john@gmail.com" required>
+            <br><br>
+            <label>password</label>
+            <input type="Password" name ="password" placeholder="Enter password" maxlength="20" required><br>
+            <label>confirm password</label>
+            <input type="Confirm password" name ="password" maxlength="20" required><br>
+            <label>Birth date</label>
+            <input type="date" name="date"><br>
+            <label>Choose gender:</label>
+            <select name ="gender" id ="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select><br>
+            <br>
+            <label>Subscription:</label><br>
+            <input type="radio">Free
+            <input type="radio">Free
+            <input type="radio">Premium
+            <br>
+            <br>
+            <label>Select Hobbies</label><br>
+            <input type="checkbox" name="checkbox">Reading
+            <input type="checkbox" name="checkbox"> Travelling
+            <input type="checkbox" name="checkbox">Coding
+            <input type="checkbox" name="checkbox">Sports
+            <br><br>
+            <label>Upload a picture</label>
+            <input type="file">
+            <br>
+            <br>
+            
+                <button class="submit">Submit</button>
+            
+            
+        </div>
+            </form>
+
+</body>
+</html>
