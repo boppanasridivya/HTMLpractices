@@ -9,7 +9,7 @@
     <form action="">
            <h2>Feedback Form</h2>
             <label>Name</label>
-            <input type="text" name="name" placeholder="Enter full name" required>
+            <input type="text" name="name" placeholder="Enter full name" pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" required>
             <label>Email</label>
             <input type="email" name ="email" placeholder="enter your email" value="john@gmail.com" required>
             <br><br>
@@ -22,8 +22,9 @@
             <input type="radio" name="radio">Compliment<br>
             <input type="radio" name="radio">Complaint<br>
             <input type="radio" name="radio">Suggestion<br>
-            <input type="checkbox">I agree to the given feedback policy.<br>
-            <a href="https://accounts.google.com/InteractiveLogin?continue=https://www.google.com/tools/feedback/reports/home&followup=https://www.google.com/tools/feedback/reports/home&passive=1209600&ifkv=AdF4I750qz96fz8pFLRD1VVNbaB7ni6Axc1X2xa_e1DPUXnBSBPVWdhgLnv4zYI1UllHHFAEgIE_DA">feedback policy</a><br><br>
+            <input type="checkbox" required>I agree to the given feedback policy.<br>
+            
+            <a href="C:\Users\boppa\OneDrive\Desktop\HTML\HTMLpractices\feedbackform.html">feedback form</a><br><br>
             <button class="click">Submit</button>
             </form>
 </body>
