@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIgnUp Form</title>
+    <script src="https://kit.fontawesome.com/bbad4e43aa.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+           
+            font-family: 'Poppins', sans-serif;
+           
+        }
+        body{
+            background-position: 100%;
+            padding: 20px;
+            width: 400px;
+            background-image: url("https://images.pexels.com/photos/7130488/pexels-photo-7130488.jpeg");
+            margin:0 auto;
+           
+        }
+        h1{
+            text-align: center;
+            color: rgb(37, 8, 64);
+
+        }
+        .container{
+            padding: 20px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            justify-content: center;
+            align-items: center;
+            display: block;
+            top: 50%;
+            left: 50%;
+            
+            
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"]{
+            width:90%;
+            padding: 5px;
+            border-radius: 3px;
+
+        }
+        .btn{
+           
+           width: 80px;
+           height: 25px;
+           border-radius: 5px;
+           float: right;
+        }
+        .box{
+           
+           margin: auto;
+           display: flex;
+           align-items: center;
+        }
+        .input{
+            background: transparent;
+            width: 100%;
+            border: 0;
+            outline: 0;
+            padding: 18px 15px;
+        }
+        .btn-field{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .btn-field button{
+            flex-basis: 30%;
+            width: 80px;
+            height: 30px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background 1s;
+            background: rgb(104, 175, 207);
+
+        }
+        .btn-field button.disable{
+           background: #eaeaea;
+           color: #555;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="header">Sign Up</h1>
+        <form>
+          <div class="box">
+            <i class="fa-regular fa-user"></i>
+            <input type="text" name="full name" placeholder="Enter your full name" required><br>
+          </div><br>
+          
+          <div class="box">
+            <i class="fa-regular fa-envelope"></i>
+          <input type="email" name="email" placeholder="Enter your email" required><br>
+          </div><br>
+  
+          <div class="box">
+            <i class="fa-solid fa-key"></i>
+          <input type="password" name="password" placeholder="Enter your password" required><br>
+            <br>
+          </div><br>
+          <!-- <label>Gender</label><br>
+          <input type ="radio" name="radio">Male
+          <input type ="radio" name="radio">Female
+          <input type ="radio" name="radio">Other -->
+          <p>forgot password?<a href="">click here</a></p>
+          
+          <div class="btn-field">
+            <button type="button">Sign up</button>
+            <button type="button" class="disable">Sign in</button>
+          </div>
+          
+     
+     
+      <!-- <input type="button" value="Create account" class="signin"> -->
+      
+        </form>
+    </div>
+        
+</body>
+</html>
