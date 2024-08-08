@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            background-color: lightblue;
+            padding:10px;
+            border:5px solid black;
+            display: flex;
+            
+            
+            
+        }
+         #container > div{
+             height: 50px;
+             padding: 30px;
+            
+        }
+        #container > div:nth-child(even){
+            background-color: brown;
+            
+        }
+        #container > div:nth-child(odd){
+            background-color: pink;
+           
+        }
+        /* #container > div:nth-child(3){
+            background-color: rgb(72, 72, 227);
+        } */
+         /* flex-order  : whatever u give it will store in first place in from the right*/
+         .item-1{
+            order: 3;
+           flex-grow: 3; 
+           /* flex-grow: it will increase the space of the partcular item we give; */
+         }
+         .item-2{
+            order: 4;
+         }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="item-1">1</div>
+        <div class="item-2">2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        
+    </div>
+</body>
+</html>
