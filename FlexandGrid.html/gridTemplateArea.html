@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GridPractice</title>
+    <style>
+        #container{
+            /* width: 300px; */
+            display: grid;
+            /* flex-wrap: wrap; */
+            border: 1px solid rgb(199, 7, 7);
+            background-color: aliceblue;
+            padding: 10px;
+            /* grid-template-columns: 100px 100px; */
+            grid-template-columns: repeat(3, 200px);
+            grid-template-rows: repeat(2, 300px);
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            grid-template-areas: 
+            "brown orange pink"
+           " lightblue dp lg";
+            /*To use grid template areas in parent we need to give grid area and value in child then we have to use them here to change the positions*/
+        }
+        #container>div{
+            padding: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+         #container > div:nth-child(1){
+            background-color: rgb(190, 28, 28);
+            grid-area: brown;
+            
+        }
+        #container > div:nth-child(2){
+            background-color: pink;
+            grid-area: pink;
+        }
+        #container > div:nth-child(3){
+            background-color: orange;
+            grid-area: orange;
+            
+        }
+        #container > div:nth-child(4){
+            background-color: rgb(36, 224, 224);
+            
+            grid-area: lightblue;
+            
+        }
+        #container > div:nth-child(5){
+            background-color: rgb(139, 205, 119);
+            grid-area: lg;
+        }
+        #container > div:nth-child(6){
+            background-color: rgb(212, 12, 192);
+            grid-area: dp;
+        }
+       
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        
+    </div>
+</body>
+</html>
