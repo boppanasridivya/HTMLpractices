@@ -3,8 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>GridPractice</title>
+    <style>
+        #container{
+            /* width: 300px; */
+            display: grid;
+            border: 1px solid rgb(199, 7, 7);
+            background-color: aliceblue;
+            padding: 20px;
+            /* grid-template-columns: 100px 100px; */
+            grid-template-columns: repeat(2, 50px);
+            grid-template-rows: repeat(2, 50px);
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        #container>div{
+            padding: 20px;
+        }
+         #container > div:nth-child(1){
+            background-color: rgb(190, 28, 28);
+            
+        }
+        #container > div:nth-child(2){
+            background-color: pink;
+        }
+        #container > div:nth-child(3){
+            background-color: orange;
+            
+        }
+        #container > div:nth-child(4){
+            background-color: rgb(36, 224, 224);
+        }
+    </style>
 
 </head>
 <body>
