@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Mobile_calculator</title>
+    <style>
+        h1{
+            text-align: center;
+            font-size: 50px;
+            color: teal;
+        }
+        #calci{
+          width: 300px;
+          margin: auto;
+          padding: 40px;
+          border-radius: 30px;
+          box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+          background-color: black;
+         
+        }
+        #display{
+            height: 80px;
+            border-radius: 5px;
+            width: 100%;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.11), 0 2px 2px rgba(0,0,0,0.11), 0 4px 4px rgba(0,0,0,0.11), 0 6px 8px rgba(0,0,0,0.11), 0 8px 16px rgba(0,0,0,0.11);
+            background-color: white;
+        }
+        #key{
+            display: grid;
+            grid-template-columns:repeat(4, 1fr);
+            grid-template-rows: repeat(5, 80px);
+            gap: 10px;
+            margin-top: 20px;
+            
+        }
+        #key > div{
+            /* border: 1px solid black; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 8px 24px 0px rgba(140, 149, 159, 0.2);
+            /* color: white;
+            background-color: black; */
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+        .red{
+            color: white;
+            background-color: red;
+        }
+        .orange{
+            color: white;
+            background-color: orange;
+        }
+        .pink{
+            background-color: lightpink;
+        }
+        .black{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <section id="calci">
+        <div id="display"></div>
+         <div id="key">
+            <div class="black">1</div>
+            <div class="black">2</div>
+            <div class="black">3</div>
+            <div class="pink">+</div>
+            <div class="black">4</div>
+            <div class="black">5</div>
+            <div class="black">6</div>
+            <div class="pink">-</div>
+            <div class="black">7</div>
+            <div class="black">8</div>
+            <div class="black">9</div>
+            <div class="pink">*</div>
+            <div class="black">0</div>
+            <div class="black">00</div>
+            <div class="black">.</div>
+            <div class="orange">=</div>
+            <div class="red">AC</div>
+            <div class="black">%</div>
+            <div class="black">back</div>
+            <div class="pink">/</div>
+         </div>
+        
+    </section>
+</body>
+</html>
