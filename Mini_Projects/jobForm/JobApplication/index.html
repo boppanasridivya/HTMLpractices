@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JobApplication</title>
 </head>
 <body>
@@ -11,7 +11,7 @@
         <div><a href="">Job Applied</a></div>
         <div><a href="">BookMark</a></div>
     </div>
-    <form>
+    <form id="myForm">
         <h2>Enter your Application Details</h2>
         <input type="'text" placeholder="Enter your name" id="name" >
         <input type="email" placeholder="Enter email" id="email">
@@ -20,8 +20,33 @@
             <option value="backend">Backend Developer</option>
             <option value="frontend">Front-End Developer</option>
         </select>
+        <input type="number" id="salary" placeholder="Enter the expected salary per annum">
+        <input type="submit" id="submit" value="Submit">
     </form>
 
-    
 </body>
 </html>
+<script>
+    document.querySelector("#myForm").addEventListener("submit", jobSubmit);
+
+    let jobArr=[];
+
+   function jobSubmit(){
+    event.preventDefault();
+    let jobObj = {
+        personName: document.querySelector("#name").value,
+        // or you can write it in below format as well
+        userEmail :myForm.email.value,
+        personRole :myForm.role.value,
+        personSalary : myForm.salary.value
+            
+    }
+    jobArr.push(jobObj);
+   localStorage.setItem("jobList", JSON.stringify(jobArr));
+//    sessionStorage.setItem("jobList", JSON.stringify(jobArr));
+//    session storage is temporary storage when we close the browser the data will not be stored
+//    and local storage is permanen even when we close the browser also it will there
+   //and the limit for the storages around 500mb provided by webbrowsers
+    
+   }
+</script>
