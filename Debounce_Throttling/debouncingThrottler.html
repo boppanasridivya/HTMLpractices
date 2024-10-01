@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input">
+</body>
+</html>
+<script>
+   let searchBar = document.querySelector("#input");
+   searchBar.addEventListener("input", function(element){
+         throttleDebounce(element.target.value);
+    })
+
+    function fetchData(query){
+        console.log(`throttleDebounce combination : ${query}`);
+    }
+
+    //combing both here
+    const throttleDebounce = throttler(debounce(fetchData, 3000),2000);
+    //debounce
+    function debounce(func, delay){
+        let timeoutId;
+        return function(arg){
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                 func(arg); //calling the function
+            }, delay);
+        }
+
+    }
+
+    //throttler
+    function throttler(func, interval){
+        let prev = 0;
+        return function(arg){
+            let now = new Date().getTime();
+            if(now - prev > interval){
+                prev =now;
+                 func(arg);
+            }
+        }
+    }
+    
+</script>
