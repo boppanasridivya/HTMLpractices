@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input" oninput="onSearchInput()">
+</body>
+</html>
+<script>
+    function debounce(func, delay){
+        let timeoutId;
+
+        return function(arg){
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() =>{
+                func(arg);
+            }, delay)
+  
+        }
+    }
+    function FetchData(query){
+        console.log(`processing data ${query}`);
+    }
+let debouncedDataSearch = debounce(FetchData, 3000);
+
+let input = document.querySelector("#input");
+    function onSearchInput(){
+        const query = event.target.value;
+        debouncedDataSearch(query);
+    }
+</script>
