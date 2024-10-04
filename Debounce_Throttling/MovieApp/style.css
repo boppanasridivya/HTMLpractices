@@ -1,0 +1,95 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-style: outfit;
+}
+body{
+ background-color: #dadada;
+}
+ul {
+    display: flex;
+    gap: 30px;
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-weight: 100px;
+    font-size: 25px;
+}
+#profile{
+   color: rgb(198, 187, 187);
+}
+#carousel {
+   padding-bottom: 2%;
+   margin-top: 3px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 1px solid black;
+   height: 600px;
+   width: 100%;
+   overflow: hidden;
+   
+}
+#carousel image{
+   width: 100%;
+   height: 100%;
+   border: 3px solid rgb(169, 200, 16);
+   
+   
+}
+nav{
+    background-color: black;
+    display: flex;
+    padding: 10px 20px;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+    padding: 10px 20opx;
+    margin-right: 10px;
+    
+}
+.nav-search input{
+
+    flex:1;
+    border: 1px solid white;
+    padding: 15px 25px;
+    width: 400px;
+}
+
+#poster{
+    display: flex;
+    align-items: center;
+    /* border: 1px solid black; */
+    justify-content: space-between;
+    /* padding: 20px; */
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    
+}
+#search-bar{
+    font-weight: 3px;
+    
+}
+#movies{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+#basic{
+    display: flex;
+    justify-content: center;
+    
+}
+div{
+    font-size: 25px;
+    font-weight: 30px;
+    
+    
+}

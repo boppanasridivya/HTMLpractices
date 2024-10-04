@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie App</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/bbad4e43aa.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav>
+        <a href="/">
+            <img src="https://img.hotstar.com/image/upload/v1656431456/web-images/logo-d-plus.svg" alt = "Hotstar app">
+        </a>
+        <div class="nav-search">
+            <input type="text" placeholder="Search here" id="query">
+            <i class="fa-solid fa-magnifying-glass" id="search-bar"></i>
+            
+        </div>
+        <div id="links">
+            <ul>
+                <i class="fa-solid fa-house"></i><a href=""><li>Home</li></a>
+                <i class="fa-solid fa-football"></i><a href=""><li>Sports</li></a>
+                <i class="fa-solid fa-tv"></i><a href=""><li>Tv shows</li></a>
+                <a href=""><li>Cartoons</li></a>
+            </ul>
+        </div>
+        <div id="profile">
+            <i class="fa-regular fa-user"></i>
+        </div>
+    </nav>
+    <!-- <h1>Hot star</h1> -->
+    <!-- <a href="Search.html">Search Move</a> -->
+    <!-- carosuel means slideshow -->
+    <div id="carousel" class="carousel"> 
+
+    </div>
+    <div>
+        <button onclick="sortLH()">Rating:LH</button>
+        <button onclick="sortLH()">Rating:LH</button>
+    </div>
+    <div id="basic" class="Loader">
+        <iframe 
+        src="https://giphy.com/embed/uIJBFZoOaifHf52MER" 
+        width="480" height="446" 
+        frameBorder="0" 
+        class="giphy-embed" allowFullScreen>
+    </iframe>
+        
+    </div>
+
+</body>
+</html>
+<script src="home.js"></script>
