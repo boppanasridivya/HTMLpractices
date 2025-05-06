@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+       background-color: rgb(198, 241, 241);
+       display: flex;
+       width: 200px;
+       height: 50px;
+       justify-content: center;
+       flex-direction: row;
+       /* align-items: center; */
+       text-align: center;
+       gap: 10px;
+
+    }
+    div div:nth-child(odd){
+        background-color: bisque;
+        width: 40px;
+        
+
+    }
+    div div:nth-child(even){
+        background-color: burlywood;
+        width: 40px;
+    }
+</style>
+<body>
+    <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </div>
+</body>
+</html>
