@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: flex;
+        }
+       #container> div{
+            background-color: aqua;
+            height: 70px;
+            width: 90px;
+            margin: 10px;
+            gap: 10px;
+
+        }
+    </style>
+</head>
+<body>
+   <div id="container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+   </div>
+</body>
+</html>
+<script>
+    let boxes = document.querySelectorAll("#container > div");
+    console.log(boxes);
+
+    boxes.forEach(function(element){
+
+        element.addEventListener("click",getTarget);
+    });
+        
+    
+    function getTarget(event){
+        console.log(event.target.innerText);
+        event.target.style.color="red";
+    }
+</script>
