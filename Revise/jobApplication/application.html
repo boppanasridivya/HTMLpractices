@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./index.css">
+<style>
+    #filter{
+        display: flex;
+        padding: 0px;
+        width: 20%;
+    }
+    option{
+        font-size: 10px;
+    }
+    select{
+
+        font-size: 10px;
+    }
+</style>
 
 </head>
 <body>
@@ -16,6 +30,19 @@
             <a href="./bookMark.html">BookMark</a>
         </nav> 
         <h1>Applicant Details</h1>
+      <div id="filter">
+        <select id="sortByName">
+            <option value="sort by name">sort by name</option>
+            <option value="asc">ASC</option>
+            <option value="dsc">DSC</option>
+        </select>
+        <select  id="sortBySalary">
+            <option value="sory by salary">sort by salary</option>
+            <option value="LTH">LTH</option>
+            <option value="HTL">HTL</option>
+        </select>
+      </div>
+        
         <table>
             <thead>
                 <tr>
@@ -33,10 +60,83 @@
 </body>
 </html>
 <script>
+    //getting the data from the localstorage db by JSON
    let jobArr = JSON.parse(localStorage.getItem("jobList"));
+   //if bookmarkarry is empty then it create a new array or it will show the already existed data
    let bookMarkArrayList = JSON.parse(localStorage.getItem("bookMarkList")) || [];
-   jobArr.forEach(function(elem){
-     let tr = document.createElement("tr");
+   display(jobArr);
+
+     function bookMarkFunction(elem){
+        //pushing each object in to an array
+        bookMarkArrayList.push(elem);
+        localStorage.setItem("bookMarkList", JSON.stringify(bookMarkArrayList));
+        
+     }
+   
+
+   let sortByNameSelect = document.querySelector("#sortByName");
+   sortByNameSelect.addEventListener("change", sortByName);
+ 
+//filtering by name
+   function sortByName(){
+    let selectedValue = document.querySelector("#sortByName").value;
+       if(selectedValue ==="asc"){
+        jobArr.sort(function(a,b){
+            let x= a.personName.toUpperCase();
+            let y = b.personName.toUpperCase();
+            if(x>y){
+                return 1;
+            }
+            if(x<y){
+                return -1;
+            }
+            return 0;
+        })
+        display(jobArr);
+       }
+       
+       if(selectedValue ==="dsc"){
+        jobArr.sort(function(a,b){
+            let x= a.personName.toUpperCase();
+            let y = b.personName.toUpperCase();
+            if(x>y){
+                return -1;
+            }
+            if(x<y){
+                return 1;
+            }
+            return 0;
+        })
+        display(jobArr);
+       }
+       }
+//sort by salary
+let sortBySalarySelect = document.querySelector("#sortBySalary");
+sortBySalarySelect.addEventListener("change", sortBySalary);
+
+function sortBySalary(){
+    let selectedSalary = document.querySelector("#sortBySalary").value;
+    if(selectedSalary === "HTL"){
+        jobArr.sort(function(a,b){
+            return b.personSalary-a.personSalary;
+        })
+     display(jobArr);
+    }
+    else if(selectedSalary === "LTH"){
+        jobArr.sort(function(a,b){
+            return a.personSalary-b.personSalary;
+        })
+     display(jobArr);
+    }
+    
+}
+
+
+   //written function to use in multiple places by calling the display function 
+   function display(data){
+        document.querySelector("tbody").innerHTML="";
+         data.forEach(function(elem){
+            let tr = document.createElement("tr");
 
      let td1 = document.createElement("td");
      td1.innerText = elem.personName;
@@ -53,11 +153,6 @@
      tr.append(td1,td2,td3,td4);
 
      document.querySelector("tbody").append(tr);
-     function bookMarkFUnction(elem){
-        bookMarkArrayList.push(elem);
-        localStorage.setItem("bookMarkList", JSON.stringify(bookMarkArrayList));
-        
-        window.location.href = "bookMark.html"
-     }
-   })
+         })
+        }
 </script>
