@@ -40,3 +40,13 @@ function renderMenu(menuItems){
     menuContainer.append(menuItem);
   })
 }
+
+function renderTables((table){
+  const table = document.createElement("div");
+  table.className ="table-num"
+  table.id = table.id;
+
+  table.innerHTML`
+  
+  `
+})
