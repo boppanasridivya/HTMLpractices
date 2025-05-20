@@ -59,6 +59,7 @@ function renderTables(tables){
             0
           )}</p>
         `
+        tableCard.addEventListener("click", ()=> showOrderDetails(table.id));
      tableContainer.append(tableCard);
      tableCard.addEventListener("dragover", dragOver);
      tableCard.addEventListener("drop", itemDrop);
@@ -107,4 +108,110 @@ function addItemToTable(tableId,itemName,itemPrice){
         0
       )}`;
       
+}
+//function to showOrderDetails
+function showOrderDetails(tableId){
+    const table = tables.find((table) => table.id===tableId);
+
+    const modalBody = document.getElementById("modal-body");
+    modalBody.innerHTML = "";
+
+    //we need Item name on the popup so we needs 
+    Object.keys(table.items).forEach((itemName) =>{
+        const item = table.items[itemName];
+
+        const itemPrice = item.price;
+        modalBody.innerHTML = modalBody.innerHTML+`
+        <div class="order-item">
+        <p>
+        ${itemName}
+        <input type="number" value="${item.quantity}" min=0 onChange= "updateItemQuantity('${tableId}', '${itemName}', this.value)">
+
+        x $${itemPrice}
+        </p>
+        <button onclick="deleteItem('${tableId}', ${itemName}')">Remove</button>
+        </div>
+        <p>Total:${table.total}</p>
+        `
+    })
+    document.getElementById("order-modal").style.display="flex"
+}
+document.querySelector(".closeButton").addEventListener("click", ()=>{
+    document.getElementById("order-modal").style.display="none";
+});
+
+function updateItemQuantity(tableId, itemName,newQuantity){
+    const table = tables.find((table) => table.id ===tableId);
+
+    const item = table.items[itemName];
+    const oldQuantity = item.quantity;
+
+    const quantityDifference = newQuantity - oldQuantity;
+    item.quantity = parseFloat(newQuantity);
+
+    table.total = table.total+quantityDifference*item.price;
+
+    if(item.quantity <=0){
+        deleteItem(tableId,itemName);
+    }
+    else{
+        const tableCard = document.getElementById(tableId);
+        tableCard.querySelector("p").textContent = `
+        Total: ${table.total}`
+
+        tableCard.querySelector("p:nth-of-type(2)").textContent=
+    `items: ${Object.values(table.items).reduce((a,b) => a+b.quantity ,0)};
+    `
+       
+    }
+    
+    showOrderDetails(tableId);
+}
+function deleteItem(tableId, itemName) {
+  console.log("delete");
+  const table = tables.find((table) => table.id === tableId);
+
+  if (table.items[itemName]) {
+    const item = table.items[itemName]; // biryani
+
+    table.total -= item.quantity * item.price;
+
+    delete table.items[itemName];
+  }
+
+  //update UI
+
+  const tableCard = document.getElementById(tableId);
+
+  tableCard.querySelector("p").textContent = `Total: $${table.total.toFixed(
+    2
+  )}`;
+
+  tableCard.querySelector(
+    "p:nth-of-type(2)"
+  ).textContent = `Items: ${Object.values(table.items).reduce(
+    (storage, element) => storage + element.quantity,
+    0
+  )}`;
+
+  //update modal
+  showOrderDetails(tableId);
+}
+function filteredTable(){
+ const searchText = document.querySelector("#table-search").value.toLowerCase();
+
+ const filterTables = tables.filter((table) =>
+    table.name.toLowerCase().includes(searchText)
+  );
+
+  renderTables(filterTables);
+}
+function filteredMenu() {
+  const searchText = document.getElementById("menu-search").value.toLowerCase();
+
+  const filterMenu = menuItems.filter((table) =>
+    table.name.toLowerCase().includes(searchText)
+  );
+
+  renderMenu(filterMenu);
 }
