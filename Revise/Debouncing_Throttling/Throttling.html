@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input">
+</body>
+</html>
+<script>
+    let input = document.getElementById("input");
+    input.addEventListener("keyup", function(e){
+        let query = e.target.value;
+        throtllerReuslt(query);
+    });
+
+    let throttling = function(fetchData, delay){
+        let prev=0;
+        return function(arg){
+            let now = new Date().getTime();
+
+            if(now-prev > delay){
+                prev = now;
+
+                return fetchData(arg);
+            }
+        }
+    }
+
+    const throtllerReuslt = throttling(fetchData, 2000);
+
+    function fetchData(query){
+        console.log(`the result of fecthing data is ${query}`)
+    }
+</script>
