@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" oninput="onSearchInput(event)">
+</body>
+</html>
+<script>
+    function onSearchInput(event){
+       let query = event.target.value;
+       debounceProcessedQueryResult(query);
+    }
+
+    function debounce(fetchData, delay){
+        let timeOutId;
+        return function(arg){            //anonymous function and also called as closure function//inner function
+          clearTimeout(timeOutId);
+              //we are clearing the id which are typing anything , before next type it will creare all the ids and restart again
+          timeOutId = setTimeout(() =>{
+
+              fetchData(arg);  // the function which needs to wait
+          },delay)
+        }
+    }
+    const debounceProcessedQueryResult = debounce(fetchData, 5000);  
+    // outer function will return the inner function we are storing in a varibale this is called closure function
+
+    function fetchData(query){
+        console.log("Processed query output :",`${query}`);
+    }
+</script>
