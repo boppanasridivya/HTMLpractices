@@ -28,3 +28,108 @@ function slideShow(){
 }
 
 slideShow();
+
+
+// searchFunction this is used to get the title and poster fromthe api
+async function SearchFunction(){
+    try{
+        let loader_div = document.getElementById("loader")
+        
+        loader_div.style.display = "block";
+        
+        let query = document.getElementById("input").value;
+
+        let response = await fetch(`http://www.omdbapi.com/?apikey=918341e&s=${query}`);
+        let data = await response.json();
+
+        console.log(data.Search);
+        appendMovies(data.Search)
+
+    }
+    catch(error){
+        console.log("error :", error)
+    }
+}
+
+//function appendMovies is used to append the data in to the loader page
+function appendMovies(data){
+    let loader_div = document.getElementById("loader");
+    loader_div.style.display = "none";
+    
+    let data_div= document.getElementById("movies");
+    data_div.innerHTML="";
+
+    data_div.id ="movies";
+
+    data.forEach((element) => {
+        let div = document.createElement("div");
+
+        let title = document.createElement("p");
+        title.innerHTML = `Name : ${element.Title}`;
+
+        let year = document.createElement("p");
+        year.innerHTML = `Year of release : ${element.Year}`;
+
+        let posters = document.createElement("img");
+        posters.src = `${element.Poster}`
+        div.append(posters, title,year);
+
+
+
+        data_div.append(div);
+    });
+  
+
+}
+
+
+//debouncing technique we are using to reduce the api calls
+let inputQuery = document.getElementById("input");
+
+
+inputQuery.addEventListener("keyup", function(e){
+  let query = e.target.value;
+  debouncedResult(query);
+})
+
+
+function debounce(fetchData, delay){
+    let timerId;
+    return function(arg){
+        clearTimeout(timerId);
+
+        timerId=setTimeout(() => {
+            fetchData(arg);
+        }, delay);
+    }
+}
+let debouncedResult = debounce(fetchData, 1500);
+
+// function fetchData(query){
+//     console.log("fetchdata:", query);
+// }
+
+async function fetchData(query){
+    try {
+        console.log("fetchdata:", query);
+        let response = await fetch(`http://www.omdbapi.com/?apikey=918341e&s=${query}`);
+        let data = await response.json();
+        
+        if (data.Search) {
+            showMovies(data.Search); // Use your filtering logic
+        } else {
+            appendMovies([]); // Clear results or show "No results"
+        }
+    } catch (error) {
+        console.log("Error  fetchData:", error);
+    }
+}
+
+//searching for that movie whichever related to the letter based
+function showMovies(data){
+    let searchText = document.getElementById("input").value.toLowerCase();
+    const filteredMovies = data.filter((movie)=>{
+       return movie.Title.toLowerCase().includes(searchText);
+    });
+    appendMovies(filteredMovies);
+}
