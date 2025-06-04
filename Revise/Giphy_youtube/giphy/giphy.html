@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./main.css">
 </head>
 <body>
     <main>
         <div>
-            <input type="text" id="search" oninput="SearchGiphy()">
-            <button id="gify" onclick="giphySearch()"></button>
-            <button id="sticker" onclick="stickerSearch()"></button>
+            <input type="text"placeholder="search for stickers or gifs" id="search" oninput="SearchGiphy()">
+            <button id="gify" onclick="giphySearch()">Gify</button>
+            <button id="sticker" onclick="stickerSearch()">Sticker</button>
         </div>
     </main>
+
+    <div id="giphy"></div>
+    <div id="sticker"></div>
+    <div id="main"></div>
 </body>
 </html>
+<script src="giphy.js"></script>
