@@ -31,6 +31,10 @@ const appendToDOM = (data) =>{  //here data means array of objects
         let image = document.createElement("img");
         image.src = element.images.downsized.url;
 
+        image.addEventListener("click", ()=>{
+            details_gif(element.id);  //whenever we are clicking on an gif it has to open in gip page based on id we will target
+        })
+
         div.append(image);
 
         main.append(div);
@@ -38,3 +42,22 @@ const appendToDOM = (data) =>{  //here data means array of objects
     });
 }
 main();
+
+const details_gif = (id) =>{
+    localStorage.setItem("details", JSON.stringify(id));
+
+    window.location.href ="./giphy_details.html";
+}
+const gif = async() =>{
+    let query = document.querySelector("#search").value;
+
+    if(query===""){
+        alert("please search here");
+    }
+    else{
+        let response= await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&q=${query}`);
+        let data = await response.json();
+        
+    }
+
+}
