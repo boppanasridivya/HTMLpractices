@@ -5,7 +5,7 @@ const main = async()=>{
         let response = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${APIKEY}`);
 
         let data = await response.json();
-        console.log(data);
+        // console.log(data);
         appendToDOM(data.data);  //from the api
     }
     catch(error){
@@ -15,7 +15,7 @@ const main = async()=>{
 
 const appendToDOM = (data) =>{  //here data means array of objects
 
-         let gifyContent = document.querySelector("#gify");
+         let gifyContent = document.querySelector("#giphy");
         let stickerContent = document.querySelector("#sticker");
 
         gifyContent.innerHTML="";
@@ -48,16 +48,22 @@ const details_gif = (id) =>{
 
     window.location.href ="./giphy_details.html";
 }
-const gif = async() =>{
+const giphySearch = async() =>{
     let query = document.querySelector("#search").value;
 
     if(query===""){
         alert("please search here");
     }
     else{
-        let response= await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&q=${query}`);
+       try{
+         let response= await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&q=${query}`);
         let data = await response.json();
-        
+       appendToDOM(data.data);
+       }
+       catch(error){
+        console.log(error);
+       }
     }
 
 }
+giphySearch();
