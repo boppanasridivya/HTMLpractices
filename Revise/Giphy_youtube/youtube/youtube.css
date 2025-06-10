@@ -1,0 +1,25 @@
+input{
+    width: 40%;
+    height: 30px;
+    padding: 5px;
+    border-radius: 6px;
+}
+button{
+    background-color: lightcoral;
+    color: white;
+    height: 40px;
+    width: 100px;
+    border-radius: 6px;
+}
+#main_heading{
+    color: red;
+    background-color: black;
+    padding: 10px;
+}
+
+#videos,#Results{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-content: space-around;
+    margin-top: 20px;
+}

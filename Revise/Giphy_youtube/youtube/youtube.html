@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./youtube.css">
+</head>
+<body>
+    <section id="main">
+        <h2 id="main_heading">Youtube</h2>
+        <div>
+            <input type="text" id="search" placeholder="search here for the content">
+            <button onclick="SearchVideo()">Search</button>
+        </div>
+        <div id="videos"></div>
+    </section>
+</body>
+</html>
+<script>
+    let APIKEY ="AIzaSyBOgoG2XKTK9--uiigbpaHJqBCaI5p7sc4";
+    let search_div = document.getElementById("videos");
+    const SearchVideo= async()=>{
+
+          try{
+        let query = document.getElementById("search").value;
+        let response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${APIKEY}&part=snippet&q=${query}&maxResults=30`);
+        let data = await response.json();
+        console.log(data);
+        appendToDom(data.items);
+    }
+    catch(error){
+        console.log(error);
+    }
+    }
+
+    function appendToDom(data){
+        search_div.innerHTML ="";
+       document.getElementById("search").value="";
+        data.forEach((element) =>{
+            let div = document.createElement("div");
+
+            const{snippet, id:{videoId}}= element; //destrcuturing the elelemnts in the api
+            let url = snippet.thumbnails.medium.url;
+
+            let image = document.createElement("img");
+            image.src= url;
+
+            let title = document.createElement("h4");
+            title.innerText=snippet.title;
+
+            div.append(image,title);
+            
+            let data = {
+                videoId:videoId,   //we can write like this also videoId, snippet if key and values are same then we can write a single value
+                snippet:snippet,
+            }
+
+            div.onclick =() =>{  //when we click on particulat it has to open in another page
+                showVideos(data);
+            }
+            search_div.append(div);
+        })
+
+    }
+
+    function showVideos(data){
+        window.location.href = "video.html";
+        localStorage.setItem("searchResults", JSON.stringify(data));
+
+        // let query = document.getElementById("search").value.toLowerCase();
+
+        // const filteredSearch = data.filter((elem)=>{
+        //     return elem.snippet.title.toLowerCase().includes(query);
+        // });
+        // appendToDom(data.items);
+    }
+   
+//     function debounceSearch(fetchData, delay){
+//         let timerId;
+//         return function(arg){
+//             clearTimeout(timerId);
+//             timerId=setTimeout(()=>{
+//                 fetchData(arg);
+//             },delay)
+//         }
+
+//     }
+
+//     let debouncedResult = debounceSearch(fetchData,3000);
+
+//    async function fetchData(query){
+//         try{
+//             let response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${APIKEY}&part=snippet&q=${query}&maxResults=30`);
+//             let data = await response.json();
+//             if(data.items){
+//                 appendToDom(data.items);
+//             }
+//             else{
+//                 appendToDom([]);
+//             }
+//         }
+//         catch(error){
+//             console.log(error);
+//         }
+//     }
+//    document.getElementById("search").addEventListener("oninput", function(event){
+//     let query = event.target.value;
+//     debouncedResult(query);
+//    })
+</script>

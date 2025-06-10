@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./youtube.css">
+</head>
+<body>
+    <h3>Display of the video page</h3>
+    <div id="Results"></div>
+</body>
+</html>
+<script>
+    const showVideo =()=>{
+        let video_data= JSON.parse(localStorage.getItem("searchResults"));
+        let Result_div = document.getElementById("Results");
+        let iframe = document.createElement("iframe");
+
+        iframe.src = `https://www.youtube.com/embed/${video_data.videoId}`;
+
+        iframe.width = "100%";
+        iframe.height= "500px";
+
+        iframe.setAttribute("allowfullscreen", true);
+        Result_div.append(iframe);
+
+    }
+
+    showVideo();
+</script>
