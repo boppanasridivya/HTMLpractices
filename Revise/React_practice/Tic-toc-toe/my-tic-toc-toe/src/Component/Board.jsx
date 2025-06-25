@@ -7,7 +7,7 @@ const Board = () => {
   const[squares, setSquares] = useState(Array(9).fill(null));
 
   function handleClick(i){
-       if(squares[i]){
+       if(squares[i] || calculateWinner(squares)){
         return;
        }
       const nextSquares = squares.slice();
@@ -20,8 +20,17 @@ const Board = () => {
       setSquares(nextSquares);
       setXIsNext(!xIsNext);
   }
+  const winner = calculateWinner(squares);
+    let status;
+  if (winner) {
+    status = 'Winner: ' + winner;
+  } else {
+    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+  }
+
   return (
     <div>
+      <div className="status">{status}</div>
       <div className="board-section">
         <Square value={squares[0]} handleClick={()=>handleClick(0)}/>
         <Square value={squares[1]} handleClick={()=>handleClick(1)}/>
@@ -43,7 +52,7 @@ const Board = () => {
   )
 }
 
-function calculatorWinner(squares){
+function calculateWinner(squares){
   const items=[
     [0,1,2],
     [3,4,5],
@@ -56,8 +65,8 @@ function calculatorWinner(squares){
   ];
 
      for(let i=0;i<items.length;i++){
-      const[a,b,c] = lines[i];
-      if(squares[a] && squares[a]===squares[b] && squares[1] === squares[c]){
+      const[a,b,c] = items[i];
+      if(squares[a] && squares[a]===squares[b] && squares[a] === squares[c]){
           return squares[a];
       }
      }
