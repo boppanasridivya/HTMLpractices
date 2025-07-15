@@ -1,0 +1,35 @@
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 800px;
+  padding: 12px;
+}
+
+/* Make label and price side by side */
+.label-price {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1; /* allows this section to grow */
+}
+
+.item-label {
+  font-weight: bold;
+}
+
+.item-price {
+  font-weight: bold;
+}
+
+/* Quantity section */
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quantity button {
+  width: 30px;
+  height: 30px;
+}
